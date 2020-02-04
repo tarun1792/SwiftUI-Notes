@@ -1,8 +1,38 @@
 # SwiftUI-Notes
 [Markdown Reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 This repo contains all the important reference for swiftUI Learning
 
-#
+#@State
+It is one source of truth for any view in swiftUI. Views are volatile i.e they are ment to be changed according to every user actions. To persist a view we SwiftUI have ***@State*** which a persistant storage created by SwiftUI on views behalf. @State property wrapper tells the system, the view depends on the property value and need to be updated everytime it is changed, Hence on every runtime change on the state property are recognized and triggers a re-rendering of only the portion of view which uses the state property.
+
+```SwiftUi
+ @State var isBlue: Bool = true
+```
+
+Now @State wrapped property should be owned by the Top most one view
+To pass the State wrapper to child view we use @Binding
+
+#@Binding
+@Binding property wrapper tells the system the property has read/write access to value without ***Ownership***. 
+>Note:- Binding properties have their values passed in from parent view as a binding,Hence default value for the property is not needed
+
+To create binding we pass State property reference by using ***$*** prefix.
+
+```SwiftUi
+ @State var isBlue: Bool = true
+ 
+ var body : some View{
+    ChildView(showColor: $isBlue)
+ }
+```
+
+in childView we define 
+
+```SwiftUi
+ @Binding var showColor: Bool
+```
+
 
 ## References 
 [SwiftUI @State and @Binding](https://dev.to/thetealpickle/swiftui-state-and-binding-23j5)
