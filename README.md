@@ -20,6 +20,8 @@ It is one source of truth for any view in swiftUI. Views are volatile i.e they a
 Now @State wrapped property should be owned by the Top most one view
 To pass the State wrapper to child view we use @Binding
 
+> Note: we use @state for simple properties like String,Integer,Boolean that belongs to single view and we usually mark them as private
+
 ### @Binding
 @Binding property wrapper tells the system the property has read/write access to value without ***Ownership***. 
 >Note:- Binding properties have their values passed in from parent view as a binding,Hence default value for the property is not needed
@@ -73,10 +75,16 @@ an ObservableObject can be defined inside the view by using @ObservedObject wrap
 ```SwiftUI
 @ObservedObject var order = Order()
 ```
+
+> Note: we use @ObserveredObject for complex properties that might belongs to several views.
+
+
 ### @EnvironmentObject
 There’s a third type of property available to use, which is @EnvironmentObject. This is a value that is made available to your views through the application itself – it’s shared data that every view can read if they want to. So, if your app had some important model data that all views needed to read, you could either hand it from view to view to view or just put it into the environment where every view has instant access to it.
 
 Think of @EnvironmentObject as a massive convenience for times when you need to pass lots of data around your app. Because all views point to the same model, if one view changes the model all views immediately update – there’s no risk of getting different parts of your app out of sync.
+
+> Note: we use @EnvironmentObject for properties that are created somewhere else and various views need to be updated based on single created property, like defining property in sceneDelegate and pass it along on various views.
 
 ## References 
 [SwiftUI @State and @Binding](https://dev.to/thetealpickle/swiftui-state-and-binding-23j5)
