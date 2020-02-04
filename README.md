@@ -3,7 +3,14 @@
 
 This repo contains all the important reference for swiftUI Learning
 
-## @State
+## State and Data Flow
+
+States and bindings connect views to the app’s underlying data model. When we declare a state, SwiftUI stores it for us and manages the state’s connections to its view. When the state updates, the view invalidates its appearance and updates itself. we can also connect animations to the state to animate 
+
+Bindings offer two-way connections, so that onscreen controls can mutate the state. Bindings also have transactions to pass values between views.
+
+
+### @State
 It is one source of truth for any view in swiftUI. Views are volatile i.e they are ment to be changed according to every user actions. To persist a view we SwiftUI have ***@State*** which a persistant storage created by SwiftUI on views behalf. @State property wrapper tells the system, the view depends on the property value and need to be updated everytime it is changed, Hence on every runtime change on the state property are recognized and triggers a re-rendering of only the portion of view which uses the state property.
 
 ```SwiftUI
@@ -13,7 +20,7 @@ It is one source of truth for any view in swiftUI. Views are volatile i.e they a
 Now @State wrapped property should be owned by the Top most one view
 To pass the State wrapper to child view we use @Binding
 
-## @Binding
+### @Binding
 @Binding property wrapper tells the system the property has read/write access to value without ***Ownership***. 
 >Note:- Binding properties have their values passed in from parent view as a binding,Hence default value for the property is not needed
 
@@ -33,7 +40,7 @@ in childView we define
  @Binding var showColor: Bool
 ```
 
-### Ownership 
+#### Ownership 
 > The biggest difference between State and Binding is ownership. Views with property's marked with State have ownership. The system created storage on that specific views behalf. With property's marked with Binding, the view has read and write access, but not ownership.
 
 
