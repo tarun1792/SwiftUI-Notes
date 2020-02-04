@@ -73,6 +73,10 @@ an ObservableObject can be defined inside the view by using @ObservedObject wrap
 ```SwiftUI
 @ObservedObject var order = Order()
 ```
+### @EnvironmentObject
+There’s a third type of property available to use, which is @EnvironmentObject. This is a value that is made available to your views through the application itself – it’s shared data that every view can read if they want to. So, if your app had some important model data that all views needed to read, you could either hand it from view to view to view or just put it into the environment where every view has instant access to it.
+
+Think of @EnvironmentObject as a massive convenience for times when you need to pass lots of data around your app. Because all views point to the same model, if one view changes the model all views immediately update – there’s no risk of getting different parts of your app out of sync.
 
 ## References 
 [SwiftUI @State and @Binding](https://dev.to/thetealpickle/swiftui-state-and-binding-23j5)
