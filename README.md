@@ -43,6 +43,33 @@ in childView we define
 #### Ownership 
 > The biggest difference between State and Binding is ownership. Views with property's marked with State have ownership. The system created storage on that specific views behalf. With property's marked with Binding, the view has read and write access, but not ownership.
 
+### @ObservedObject
+@ObservedObject are very similar to ***@State*** except now we're using external reference type rather than a local property like String or Boolean. View will still depends upon the data that will change, except in this case we are responsible to handle all data change events.
+To create a ***ObservedObject*** we need to create a class which should conform to the ***@ObservableObject*** Protocol.This is how we create a ObservedableObject.
+
+```SwiftUI
+ class Order:ObservableObject{
+    let objectWillChange = PassthroughSubject<Void,Never>()
+    
+    static let types = ["Vanilla","Chocolate","Strawberry","Rainbow"]
+    
+    var type = 0{willSet{self.update()}}
+    
+    //address details
+    var name = ""
+    
+    func update(){
+        objectWillChange.send()
+    }
+}
+
+```
+when creating a observable object we need to get to decide whether changes to each property should force to update the view or not, like in above case we on changing the type property view need to be updated. To update a view we need to call ***objectwillchange.send()*** function to inform system to regenerate the view.
+
+an ObservableObject can be defined inside the view by using @ObservedObject wrapper property.
+```SwiftUI
+@ObservedObject var order = Order()
+```
 
 ## References 
 [SwiftUI @State and @Binding](https://dev.to/thetealpickle/swiftui-state-and-binding-23j5)
