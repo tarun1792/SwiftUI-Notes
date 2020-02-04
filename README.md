@@ -6,7 +6,7 @@ This repo contains all the important reference for swiftUI Learning
 ## @State
 It is one source of truth for any view in swiftUI. Views are volatile i.e they are ment to be changed according to every user actions. To persist a view we SwiftUI have ***@State*** which a persistant storage created by SwiftUI on views behalf. @State property wrapper tells the system, the view depends on the property value and need to be updated everytime it is changed, Hence on every runtime change on the state property are recognized and triggers a re-rendering of only the portion of view which uses the state property.
 
-```SwiftUi
+```SwiftUI
  @State var isBlue: Bool = true
 ```
 
@@ -19,7 +19,7 @@ To pass the State wrapper to child view we use @Binding
 
 To create binding we pass State property reference by using ***$*** prefix.
 
-```SwiftUi
+```SwiftUI
  @State var isBlue: Bool = true
  
  var body : some View{
@@ -29,7 +29,7 @@ To create binding we pass State property reference by using ***$*** prefix.
 
 in childView we define 
 
-```SwiftUi
+```SwiftUI
  @Binding var showColor: Bool
 ```
 
