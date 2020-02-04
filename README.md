@@ -45,9 +45,10 @@ in childView we define
 
 ### @ObservedObject
 @ObservedObject are very similar to ***@State*** except now we're using external reference type rather than a local property like String or Boolean. View will still depends upon the data that will change, except in this case we are responsible to handle all data change events.
-To create a ***ObservedObject*** we need to create a class which should conform to the ***@ObservableObject*** Protocol.This is how we create a ObservedableObject.
+To create a ***ObservedObject*** we first need to import combine framework and then need to create a class which should conform to the ***@ObservableObject*** Protocol.This is how we create a ObservedableObject.
 
 ```SwiftUI
+ import Combine
  class Order:ObservableObject{
     let objectWillChange = PassthroughSubject<Void,Never>()
     
