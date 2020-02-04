@@ -64,7 +64,7 @@ To create a ***ObservedObject*** we need to create a class which should conform 
 }
 
 ```
-> when creating a observable object we need to get to decide whether changes to each property should force to update the view or not, like in above case we on changing the type property view need to be updated. To update a view we need to call ***objectwillchange.send()*** function to inform system to regenerate the view.
+> when creating a observable object we get to decide whether changes to each property should force to update the view or not, like in above case we on changing the type property view need to be updated. To update a view we need to call ***objectwillchange.send()*** function to inform system to regenerate the view.
 
 an ObservableObject can be defined inside the view by using @ObservedObject wrapper property.
 ```SwiftUI
